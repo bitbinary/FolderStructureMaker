@@ -2,5 +2,8 @@
   <button mat-raised-button color="primary" (click)="addFolder()">
     Add folder to root
   </button>
-  <app-tree-node></app-tree-node>
+  <app-tree-node
+    [treeData]="treeService.getTreeDataArray(treeService.getTreeData())"
+    (removeChildEvent)="removeChild($event)"
+  ></app-tree-node>
 </div>

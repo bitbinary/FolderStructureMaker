@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TreeNodeComponent } from './components/tree-node/tree-node.component';
 import { PageFooterComponent } from './components/page-footer/page-footer.component';
+import { PrettyJSONPipe } from './pipes/pretty-json.pipe';
 @NgModule({
   declarations: [
     FolderTreeComponent,
@@ -18,6 +19,7 @@ import { PageFooterComponent } from './components/page-footer/page-footer.compon
     PageContentComponent,
     TreeNodeComponent,
     PageFooterComponent,
+    PrettyJSONPipe,
   ],
   imports: [
     CommonModule,

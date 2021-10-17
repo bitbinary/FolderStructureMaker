@@ -5,7 +5,7 @@ import { NodeModel } from '../models/node.model';
 @Injectable({
   providedIn: 'root',
 })
-export class TreeServiceService {
+export class TreeService {
   treeData: TreeObject = {};
   rootAutoIncrementerId = 0;
   constructor() {}

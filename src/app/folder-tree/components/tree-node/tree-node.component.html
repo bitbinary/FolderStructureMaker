@@ -1,1 +1,10 @@
-<p>tree-node works!</p>
+<mat-icon svgIcon="file-regular"></mat-icon>
+<div class="tree-node-wrapper" *ngFor="let item of treeData; index as i">
+  <div class="tree-node">
+    <span>{{ item.name }}</span>
+  </div>
+  <div *ngIf="!item.type">
+    <button (click)="setChildType(item, 'file')">File</button>
+    <button (click)="setChildType(item, 'folder')">Folder</button>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+import { TreeService } from './../../services/tree.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-content.component.scss'],
 })
 export class PageContentComponent implements OnInit {
-  constructor() {}
+  constructor(public treeService: TreeService) {}
 
   ngOnInit(): void {}
   addFolder() {
-    console.log('Add new folder');
+    this.treeService.addToRoot();
+  }
+  removeChild(index: any) {
+    let ids = Object.keys(this.treeService.getTreeData());
+    console.log(index);
+    console.log(ids[index]);
+    this.treeService.removeFromRoot(ids[index]);
   }
 }
