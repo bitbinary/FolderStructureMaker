@@ -10,7 +10,6 @@
   padding: 2px 0;
   position: relative;
   border: 3px solid transparent;
-  padding-left: 12px;
 
   .tree-node-actions {
     @include flex-row-with-gap;
@@ -39,17 +38,18 @@
 .tree-node-subtree {
   margin-left: 21px;
   position: relative;
+  padding-left: 16px;
 
   .tree-node-container {
     position: relative;
-    padding-left: 10px;
+    padding-left: 0px;
     &::before {
       content: "";
       position: absolute;
       z-index: -1;
       height: calc(100% + 6px);
       border-left: 1px solid black;
-      left: 0px;
+      left: -16px;
       top: calc(-50% - 6px);
     }
   }
@@ -59,9 +59,9 @@
     &::before {
       content: "";
       position: absolute;
-      left: 0px;
+      left: -16px;
       top: 50%;
-      width: 10px;
+      width: 12px;
       border-bottom: 1px solid;
     }
   }
@@ -69,4 +69,11 @@
 
 .node-icon {
   background-color: white;
+  padding-left: 10px;
+}
+
+.tree-type-selector {
+  &:host(.tree-type-selector) {
+    background-color: khaki;
+  }
 }

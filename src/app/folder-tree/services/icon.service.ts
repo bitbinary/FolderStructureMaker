@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -15,7 +16,7 @@ export class IconService {
   ) {}
 
   public registerIcons(): void {
-    this.loadIcons(Object.values(Icons), '../assets/icons/svg');
+    this.loadIcons(Object.values(Icons), environment.customSvgPath);
   }
 
   private loadIcons(iconKeys: string[], iconUrl: string): void {
