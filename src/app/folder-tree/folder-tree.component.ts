@@ -1,7 +1,6 @@
-import { TreeObject } from './interfaces/tree-object';
 import { TreeService } from './services/tree.service';
 import { IconService } from './services/icon.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-folder-tree',
@@ -9,7 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./folder-tree.component.scss'],
 })
 export class FolderTreeComponent implements OnInit {
-  constructor(public treeService: TreeService) {}
+  constructor(
+    public treeService: TreeService,
+    private iconservice: IconService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.iconservice.registerIcons();
+  }
 }

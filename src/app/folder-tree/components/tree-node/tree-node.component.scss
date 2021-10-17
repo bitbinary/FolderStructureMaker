@@ -4,25 +4,69 @@
   align-items: center;
   gap: 10px;
 }
+
 .tree-node-container {
   @include flex-row-with-gap;
-  margin: 5px;
+  padding: 2px 0;
+  position: relative;
+  border: 3px solid transparent;
+  padding-left: 12px;
+
   .tree-node-actions {
     @include flex-row-with-gap;
+    margin-left: 20px;
     visibility: hidden;
   }
-  &:hover {
-    border: 1px solid orange;
-    border-radius: 8px;
+  &:hover,
+  &:focus-within {
+    border: 3px solid black;
+    border-radius: 4px;
     .tree-node-actions {
       visibility: visible;
     }
   }
   .tree-node-labeling {
+    input {
+      border: 2px solid orange;
+      border-radius: 2px;
+      transition: 0.2s;
+      outline: none;
+    }
     @include flex-row-with-gap;
   }
 }
 
 .tree-node-subtree {
-  padding-left: 10px;
+  margin-left: 21px;
+  position: relative;
+
+  .tree-node-container {
+    position: relative;
+    padding-left: 10px;
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      height: calc(100% + 6px);
+      border-left: 1px solid black;
+      left: 0px;
+      top: calc(-50% - 6px);
+    }
+  }
+  .tree-node {
+    @include flex-row-with-gap;
+    padding-left: 10px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: 50%;
+      width: 10px;
+      border-bottom: 1px solid;
+    }
+  }
+}
+
+.node-icon {
+  background-color: white;
 }

@@ -1,6 +1,11 @@
 <div class="tree-node-wrapper" *ngFor="let item of treeData; index as i">
   <div class="tree-node-container">
-    <div class="tree-node">
+    <!-- Node name  -->
+    <mat-icon
+      class="node-icon"
+      svgIcon="{{ item.type | iconSelect }}"
+    ></mat-icon>
+    <div class="tree-node" *ngIf="this.requiredFileTypes.includes(item.type)">
       <span>{{ item.name }}</span>
     </div>
     <!-- if the item type is not set to folder or file Ask the user for the node type -->
@@ -9,6 +14,24 @@
       <button (click)="setChildType(item, 'folder')">Folder</button>
     </div>
     <!-- Node action to create and delete the current node. Action visible on hover -->
+
+    <!-- Node labeling to add the name for the node. can save the name or cancel the process -->
+    <div
+      class="tree-node-labeling"
+      *ngIf="!item.name && this.requiredFileTypes.includes(item.type)"
+    >
+      <!-- Node Name input -->
+      <input autofocus [(ngModel)]="this.name" type="text" />
+      <!-- Confirm name -->
+      <mat-icon (click)="saveName(item)" aria-label="Example home icon"
+        >check</mat-icon
+      >
+      <!-- Cancel naming -->
+      <mat-icon (click)="removeNode(treeData, i)" aria-label="Example home icon"
+        >cancel</mat-icon
+      >
+    </div>
+    <!-- Actions to add new child and remove the selected node along with its children -->
     <span class="tree-node-actions"
       ><mat-icon
         *ngIf="item.name && this.subTreeableFileTypes.includes(item.type)"
@@ -21,17 +44,8 @@
         >delete</mat-icon
       ></span
     >
-    <!-- Node labeling to add the name for the node. can save the name or cancel the process -->
-    <div class="tree-node-labeling" *ngIf="!item.name && item.type">
-      <input autofocus [(ngModel)]="this.name" type="text" />
-      <mat-icon (click)="saveName(item)" aria-label="Example home icon"
-        >check</mat-icon
-      >
-      <mat-icon (click)="removeNode(treeData, i)" aria-label="Example home icon"
-        >cancel</mat-icon
-      >
-    </div>
   </div>
+  <!-- If node has children, Display it as subtree  -->
   <div class="tree-node-subtree">
     <app-tree-node
       *ngIf="!!item.name"

@@ -1,8 +1,14 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .page-content-wrapper {
-  margin: 8px;
+  margin: 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding-bottom: 100px;
+}
+.app-button {
+  background-color: #000000;
+  color: #ffffff;
+  margin: 10px;
 }

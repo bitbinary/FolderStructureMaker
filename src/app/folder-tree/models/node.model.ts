@@ -1,16 +1,18 @@
+import { NodeItem } from './../interfaces/node-item';
+
 export class NodeModel {
-  type: string | null = null;
+  type: 'folder' | 'file' | 'unset' | null;
   name?: string;
-  children: NodeModel[] = [];
+  children?: NodeModel[];
   id: string;
 
   constructor() {
-    this.type = null;
-    this.name = undefined;
+    this.type = 'unset';
+    this.children = [];
     this.id = '';
   }
 
-  setType(type: string): void {
+  setType(type: NodeItem['filetype']): void {
     this.type = type;
   }
   setName(name: string | undefined): void {
