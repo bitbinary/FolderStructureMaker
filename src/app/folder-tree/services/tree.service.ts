@@ -9,10 +9,10 @@ export class TreeService {
   treeData: TreeObject = {};
   rootAutoIncrementerId = 0;
   constructor() {}
-  addToRoot(): void {
+  addToRoot(type: string): void {
     let node = new NodeModel();
     node.setId(String(this.rootAutoIncrementerId));
-    node.setType('folder');
+    node.setType(type);
     this.treeData[this.rootAutoIncrementerId] = node;
     ++this.rootAutoIncrementerId;
   }

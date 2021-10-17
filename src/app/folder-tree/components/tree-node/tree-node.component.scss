@@ -1,0 +1,28 @@
+@mixin flex-row-with-gap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.tree-node-container {
+  @include flex-row-with-gap;
+  margin: 5px;
+  .tree-node-actions {
+    @include flex-row-with-gap;
+    visibility: hidden;
+  }
+  &:hover {
+    border: 1px solid orange;
+    border-radius: 8px;
+    .tree-node-actions {
+      visibility: visible;
+    }
+  }
+  .tree-node-labeling {
+    @include flex-row-with-gap;
+  }
+}
+
+.tree-node-subtree {
+  padding-left: 10px;
+}

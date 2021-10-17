@@ -10,8 +10,10 @@ export class PageContentComponent implements OnInit {
   constructor(public treeService: TreeService) {}
 
   ngOnInit(): void {}
+  // Adds folder to the root
+  // Adding folder since the button is for adding folder
   addFolder() {
-    this.treeService.addToRoot();
+    this.treeService.addToRoot('folder');
   }
   removeChild(index: any) {
     let ids = Object.keys(this.treeService.getTreeData());
